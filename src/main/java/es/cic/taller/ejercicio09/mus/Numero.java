@@ -25,6 +25,14 @@ public enum Numero {
 	public String getTexto() {
 		return this.texto;
 	}
+	
+	public String getNumeroComoTexto() {
+		if (numero < 10) {
+			return "0" + numero;
+		}
+		return "" + numero;
+	}
+	
 	public static Numero getNumero(int numero) {
 		switch (numero) {
 		case 1: return Numero.UNO;

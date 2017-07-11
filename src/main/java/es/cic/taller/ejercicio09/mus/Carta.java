@@ -25,6 +25,12 @@ public class Carta {
 	public void setPalo(Palo palo) {
 		this.palo = palo;
 	}
+	
+	public String getNombreFichero() {
+		String texto = palo.getNumero() + numero.getNumeroComoTexto() + ".png";
+		return texto;
+	}
+	
 	@Override
 	public String toString() {
 		return numero.getTexto() + " de " + palo.getTexto();

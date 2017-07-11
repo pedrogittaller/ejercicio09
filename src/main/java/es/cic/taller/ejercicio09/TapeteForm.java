@@ -6,25 +6,35 @@ import com.vaadin.server.FileResource;
 import com.vaadin.server.Resource;
 import com.vaadin.server.VaadinService;
 import com.vaadin.ui.FormLayout;
+import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Image;
 import com.vaadin.ui.TextField;
 
+import es.cic.taller.ejercicio09.mus.Carta;
 import es.cic.taller.ejercicio09.mus.Tapete;
 
 public class TapeteForm extends FormLayout {
-	private TextField carta1 = new TextField("Carta 1:");
-	private TextField carta2 = new TextField("Carta 2:");
-	private TextField carta3 = new TextField("Carta 3:");
-	private TextField carta4 = new TextField("Carta 4:");
+//	private TextField carta1 = new TextField("Carta 1:");
+//	private TextField carta2 = new TextField("Carta 2:");
+//	private TextField carta3 = new TextField("Carta 3:");
+//	private TextField carta4 = new TextField("Carta 4:");
 	
-	private Image imagen1 = new Image("Ejemplo imagen", getImageResource("document.png"));
+	private HorizontalLayout horizontalLayout = new HorizontalLayout();
+	
+	private Image imagen1 = new Image();
+	private Image imagen2 = new Image();
+	private Image imagen3 = new Image();
+	private Image imagen4 = new Image();
+	
 	
 	private MyUI myUI;
 	
 	public TapeteForm(MyUI myUI) {
 		this.myUI = myUI;
-		System.out.println("prueba de cambio");
-		addComponents(carta1, carta2, carta3, carta4, imagen1);
+
+		horizontalLayout.addComponents(imagen1, imagen2, imagen3, imagen4);
+		
+		addComponents(horizontalLayout);
 	}
 	
 	
@@ -43,13 +53,24 @@ public class TapeteForm extends FormLayout {
 
 	/* Esto es un comentario */
 	public void setTapete(Tapete tapete) {
-		carta1.setValue(tapete.getCarta1().toString());
-		carta2.setValue(tapete.getCarta2().toString());
-		carta3.setValue(tapete.getCarta3().toString());
-		carta4.setValue(tapete.getCarta4().toString());
-		imagen1.setSource(getImageResource("document2.png"));
-		imagen1.setWidth("100px");
-		imagen1.setHeight("200px");
+//		carta1.setValue(tapete.getCarta1().toString());
+//		carta2.setValue(tapete.getCarta2().toString());
+//		carta3.setValue(tapete.getCarta3().toString());
+//		carta4.setValue(tapete.getCarta4().toString());
+		cargaCarta(tapete.getCarta1(), imagen1);
+		cargaCarta(tapete.getCarta2(), imagen2);
+		cargaCarta(tapete.getCarta3(), imagen3);
+		cargaCarta(tapete.getCarta4(), imagen4);
+	}
+
+
+
+
+	private void cargaCarta(Carta carta, Image imagen) {
+
+		imagen.setSource(getImageResource(carta.getNombreFichero()));
+		imagen.setWidth("100px");
+		imagen.setHeight("200px");
 	}
 	
 }
