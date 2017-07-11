@@ -4,7 +4,8 @@ public enum Palo {
 	OROS("Oros", 1),
 	COPAS("Copas", 2),
 	BASTOS("Bastos", 3),
-	ESPADAS("Espadas", 4);
+	ESPADAS("Espadas", 4),
+	ESPECIAL("Especial", 5);
 	
 	private final String texto;
 	private final int numero;
