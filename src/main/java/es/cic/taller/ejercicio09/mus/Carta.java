@@ -31,12 +31,12 @@ public class Carta {
 		return texto;
 	}
 	
-	public Carta getDorso() {
+	public static Carta getDorso() {
 		return new Carta(Numero.UNO, Palo.ESPECIAL);
 	}
 	
 	@Override
-	public String toString() {
+	public String toString() {		
 		return numero.getTexto() + " de " + palo.getTexto();
 	}
 }
