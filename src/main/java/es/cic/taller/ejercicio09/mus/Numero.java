@@ -26,6 +26,14 @@ public enum Numero {
 		return this.texto;
 	}
 	
+	public int getValor() {
+		return valor;
+	}
+	
+	public int getNumero() {
+		return numero;
+	}
+	
 	public String getNumeroComoTexto() {
 		if (numero < 10) {
 			return "0" + numero;

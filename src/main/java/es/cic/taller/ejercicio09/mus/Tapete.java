@@ -1,5 +1,8 @@
 package es.cic.taller.ejercicio09.mus;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Tapete {
 	private Carta carta1;
 	private Carta carta2;
@@ -29,6 +32,74 @@ public class Tapete {
 	}
 	public void setCarta4(Carta carta4) {
 		this.carta4 = carta4;
+	}
+	
+	public int getPuntuacion() {
+		return 
+				carta1.getNumero().getValor() +
+				carta2.getNumero().getValor() + 
+				carta3.getNumero().getValor() + 
+				carta4.getNumero().getValor();
+	}
+	
+	public static int compararMayor(Tapete tapete1, Tapete tapete2) {
+		List<Carta> listaCartasTapete1 = getCartasOrdenas(tapete1);
+		List<Carta> listaCartasTapete2 = getCartasOrdenas(tapete2);
+		
+		int resultado = 0;
+		
+		for (int i = 0 ; i< listaCartasTapete1.size(); i++) {
+			int numero1 = listaCartasTapete1.get(i).getNumero().getNumero();
+			int numero2 = listaCartasTapete2.get(i).getNumero().getNumero();
+			
+			if (numero1 != numero2) {
+				resultado = numero2 - numero1;
+				break;
+			}
+		}
+		return resultado;		
+	}	
+	
+	public static int compararMenor(Tapete tapete1, Tapete tapete2) {
+		List<Carta> listaCartasTapete1 = getCartasOrdenas(tapete1);
+		List<Carta> listaCartasTapete2 = getCartasOrdenas(tapete2);
+		
+		int resultado = 0;
+		
+		for (int i = 0 ; i< listaCartasTapete1.size(); i++) {
+			int numero1 = listaCartasTapete1.get(i).getNumero().getNumero();
+			int numero2 = listaCartasTapete2.get(i).getNumero().getNumero();
+			
+			if (numero1 != numero2) {
+				resultado = numero1 - numero2;
+				break;
+			}
+		}
+		return resultado;		
+	}
+	
+	private static List<Carta> getCartasOrdenas(Tapete tapete) {
+		List<Carta> listaCartas = new ArrayList<>();
+		listaCartas.add(tapete.getCarta1());
+		listaCartas.add(tapete.getCarta2());
+		listaCartas.add(tapete.getCarta3());
+		listaCartas.add(tapete.getCarta4());
+		
+		for (int i = 0; i < listaCartas.size() - 1; i++) {
+			int indiceMayor = i;
+			for (int j = i + 1; j < listaCartas.size(); j++) {
+				if (listaCartas.get(j).getNumero().getNumero() > 
+					listaCartas.get(indiceMayor).getNumero().getNumero()) {
+					indiceMayor = j;
+				}
+				
+			}
+			Carta aux = listaCartas.get(i);
+			listaCartas.set(i, listaCartas.get(indiceMayor));
+			listaCartas.set(indiceMayor, aux);
+
+		}
+		return listaCartas;
 	}
 	
 }
