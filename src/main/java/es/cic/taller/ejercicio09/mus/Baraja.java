@@ -7,9 +7,13 @@ import java.util.List;
 public class Baraja {
 	private List<Carta> listaCartas = new ArrayList<>();
 	
-	private List<Carta> listaRepartidas = new ArrayList<>();
+	private List<Carta> listaMonton = new ArrayList<>();
 	
 	public Baraja() {
+		generarCartas();
+	}
+
+	private void generarCartas() {
 		listaCartas.addAll(getPalo(Palo.OROS));
 		listaCartas.addAll(getPalo(Palo.COPAS));
 		listaCartas.addAll(getPalo(Palo.BASTOS));
@@ -17,7 +21,11 @@ public class Baraja {
 		barajear();
 	}
 	
-	public List<Carta> getPalo(Palo palo) {
+	public void tirarAlMonton(List<Carta> descartadas) {
+		listaMonton.addAll(descartadas);		
+	}
+	
+	private List<Carta> getPalo(Palo palo) {
 		
 		List<Carta> listaCartasPalo = new ArrayList<>();
 		
@@ -35,12 +43,20 @@ public class Baraja {
 		Collections.shuffle(listaCartas);
 	}
 	
+	public void resetear() {
+		listaCartas.clear();
+		listaMonton.clear();
+		
+		generarCartas();
+	}
+	
 	private Carta getCarta() {
 		if (listaCartas.isEmpty()) {
-			throw new RuntimeException("No quedan cartas");
+			listaCartas.addAll(listaMonton);
+			barajear();
+			listaMonton.clear();
 		}
 		Carta carta = listaCartas.remove(0);
-		listaRepartidas.add(carta);
 		return carta;		
 	}
 	

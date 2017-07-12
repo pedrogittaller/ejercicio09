@@ -37,22 +37,6 @@ public class MyUI extends UI {
     @Override
     protected void init(VaadinRequest vaadinRequest) {
     	
-    	TabSheet sample = new TabSheet();
-        sample.setHeight(100.0f, Unit.PERCENTAGE);
-        sample.addStyleName(ValoTheme.TABSHEET_FRAMED);
-        sample.addStyleName(ValoTheme.TABSHEET_PADDED_TABBAR);
-    	
-    	
-        sample.addTab(tapete1, "Jugador1");
-        sample.addTab(tapete2, "Jugador2");
-        sample.addTab(tapete3, "Jugador3");
-        sample.addTab(tapete4, "Jugador4");
-        
-        //layout.addComponents(tapete1, tapete2, tapete3, tapete4);
-        layout.addComponent(sample);
-        
-        setContent(layout);
-        
         Baraja baraja = new Baraja();
         
         Tapete manoTapete1 = baraja.getTapete();
@@ -64,6 +48,25 @@ public class MyUI extends UI {
         tapete2.setTapete(manoTapete2);
         tapete3.setTapete(manoTapete3);
         tapete4.setTapete(manoTapete4);
+    	
+    	
+    	TabSheet sample = new TabSheet();
+        sample.setHeight(100.0f, Unit.PERCENTAGE);
+        sample.addStyleName(ValoTheme.TABSHEET_FRAMED);
+        sample.addStyleName(ValoTheme.TABSHEET_PADDED_TABBAR);
+    	
+    	
+        sample.addTab(new PantallaLayout(this, baraja), "Jugador1");
+        sample.addTab(tapete2, "Jugador2");
+        sample.addTab(tapete3, "Jugador3");
+        sample.addTab(tapete4, "Jugador4");
+        
+        //layout.addComponents(tapete1, tapete2, tapete3, tapete4);
+        layout.addComponent(sample);
+        
+        setContent(layout);
+        
+
         
     }
 
