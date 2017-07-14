@@ -1,5 +1,7 @@
 package es.cic.taller.ejercicio09.mus;
 
+import java.util.HashMap;
+
 public enum Numero {
 	UNO(1, 1, "uno"),
 	DOS(2, 1, "dos"),
@@ -33,13 +35,23 @@ public enum Numero {
 	public int getNumero() {
 		return numero;
 	}
-	
+
 	public String getNumeroComoTexto() {
 		if (numero < 10) {
 			return "0" + numero;
 		}
 		return "" + numero;
 	}
+	
+	public int getNumeroReal() {
+		switch(numero) {
+		case 2: return 1;
+		case 3: return 12;
+		default: return numero;
+		}
+		
+	}
+	
 	
 	public static Numero getNumero(int numero) {
 		switch (numero) {
@@ -56,4 +68,6 @@ public enum Numero {
 		default: throw new RuntimeException("Carta no soportada");
 		}
 	}
+	
+	
 }

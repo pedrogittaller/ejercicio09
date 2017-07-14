@@ -26,14 +26,13 @@ public class TapeteForm extends FormLayout {
 	private Image imagen3 = new Image();
 	private Image imagen4 = new Image();
 	
-	
+	  
 	private MyUI myUI;
 	
 	public TapeteForm(MyUI myUI) {
 		this.myUI = myUI;
 
 		horizontalLayout.addComponents(imagen1, imagen2, imagen3, imagen4);
-		
 		addComponents(horizontalLayout);
 	}
 	

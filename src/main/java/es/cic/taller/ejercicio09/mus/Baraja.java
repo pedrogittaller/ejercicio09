@@ -60,6 +60,9 @@ public class Baraja {
 		return carta;		
 	}
 	
+	
+	
+	
 	public Tapete getTapete() {
 		Tapete tapete = new Tapete();
 		tapete.setCarta1(getCarta());
@@ -69,4 +72,7 @@ public class Baraja {
 	
 		return tapete;
 	}
+	
+	
+	
 }

@@ -65,9 +65,7 @@ public class MyUI extends UI {
         layout.addComponent(sample);
         
         setContent(layout);
-        
-
-        
+               
     }
 
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
